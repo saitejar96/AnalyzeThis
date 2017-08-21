@@ -1,0 +1,17 @@
+Unnecessary
+mvar1
+
+mvar 16 17 18 19
+mvar 20 21 22 23
+mvar 24 25 26 27
+mvar 28 29 30 31
+mvar 32 33 34 35
+mvar 36 37 38 39
+
+Optional
+mvar3
+mvar9
+
+NOTE: fuck. binary classification problem
+
+Standardize data
