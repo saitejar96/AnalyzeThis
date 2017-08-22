@@ -24,8 +24,13 @@ countX0=0
 countX1=0
 countX2=0
 
-cleaned_dataset = [["cm_key","family size","spending capacity","total_cards","Number of acc months","Club fees","High spend prob","Influncer score","Income","Platinum card","bussiness exp prob","occupation","customer payments","numclubs","num airlines","electronics","travel","household","car","retail","total","ext1","ext2","ext3","acc1","acc2","acc3","Class"]]
-
+cleaned_dataset = [["cm_key","family size","spending capacity","total_cards","Number of acc months","Club fees","High spend prob","Influncer score","Income","Platinum card","bussiness exp prob","customer payments","numclubs","num airlines","electronics","travel","household","car","retail","total","ext1","ext2","ext3","acc1","acc2","acc3","Class"]]
+occs_list = []
+print(10)
+for x in range(0,18):
+	occs_list.append("Occs"+str(x))
+	print(occs_list[x])
+	cleaned_dataset[0].append(occs_list[x])
 for x in range(1,len(data)):
 	temp = []
 	temp.append(int(data[x][0]))
@@ -45,7 +50,6 @@ for x in range(1,len(data)):
 		temp.append(int(data[x][9]))
 	temp.append(int(data[x][10]))
 	temp.append(float(data[x][11]))
-	temp.append(occs.index(data[x][12].strip()))
 	temp.append(int(data[x][13]))
 	temp.append(int(data[x][14]))
 	temp.append(int(data[x][15]))
@@ -85,12 +89,19 @@ for x in range(1,len(data)):
 		countX1+=1
 	else:
 		temp.append(2)
-		countX2+=1
+		countX2+=1	
+	z = occs.index(data[x][12].strip())
+	if x==1:	print(z)
+	for y in range(0,18):
+		if y==z:
+			temp.append(1)
+		else:
+			temp.append(0)
 	cleaned_dataset.append(temp)
 print(countX0)
 print(countX1)
 print(countX2)
 
-with open("clean_data.csv", "wb") as f:
+with open("clean_data.csv", "w") as f:
     writer = csv.writer(f)
     writer.writerows(cleaned_dataset)
